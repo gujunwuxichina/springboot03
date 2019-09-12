@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>employee</h1>
+<div>
+    <div>
+        <button id="getById">getById</button>
+        <button id="post1">post1</button>
+        <button id="post2">post2</button>
+    </div>
+    <div id="show"></div>
+</div>
+<script src="../../static/js/jquery-1.12.4.js"></script>
+<script>
+    let show=document.getElementById('show');
+    document.getElementById('getById').addEventListener('click',function (event) {
+        show.innerText='';
+        $.ajax({
+            url:'./employee/1',
+            type:'get',
+            contentType:'application/json',
+            success(data){
+                switch (data.result) {
+                    case 'success':
+                        show.innerText=JSON.stringify(data.employee);
+                        break;
+                    case 'error':
+                        show.innerText='服务器出错!';
+                        break;
+                }
+            }
+        });
+    },false);
+    document.getElementById('post1').addEventListener('click',function (event) {
+        show.innerText='';
+        let data={
+            eName:'g',
+        };
+        $.ajax({
+            url:'./employee',
+            type:'post',
+            contentType: 'application/json',
+            data:JSON.stringify(data),
+            success(data) {
+                switch (data.result) {
+                    case 'success':
+                        show.innerText=JSON.stringify(data.employers);
+                        break;
+                    case 'error':
+                        show.innerText='服务器出错!';
+                        break;
+                }
+            }
+        });
+    },false);
+    document.getElementById('post2').addEventListener('click',function (event) {
+        show.innerText='';
+        let eName='u',eSex=1;
+        $.ajax({
+            url:'./employee/'+eName+'/'+eSex,
+            type:'post',
+            contentType:'application/json',
+            success(data){
+                switch (data.result) {
+                    case 'success':
+                        show.innerText=JSON.stringify(data.employers);
+                        break;
+                    case 'error':
+                        show.innerText='服务器出错!';
+                        break;
+                }
+            }
+        });
+    },false);
+</script>
+</body>
+</html>

@@ -68,3 +68,5 @@ mybatis:
   mapper-locations: classpath:mybatis/*Mapper.xml
   #mybatis扫描包别名，和注解@Alias联用
   type-aliases-package: com.gujun.springboot03.entity
+  #配置typeHandler扫描包
+  type-handlers-package: com.gujun.springboot03.typehandler

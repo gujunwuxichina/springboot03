@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gujun.springboot03.dao.EmployeeMapper">
+
+    <select id="getById" parameterType="int" resultType="em">
+        select
+            *
+        from
+            employee_tab
+        where
+            eId=#{eId}
+    </select>
+
+    <select id="post1" parameterType="em" resultType="em">
+        select
+            *
+        from
+            employee_tab
+        <where>
+            <if test="eName!=null and eName!=''">
+                eName like  concat('%',#{eName},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="post2" parameterType="emv" resultType="em">
+        select
+            *
+        from
+            employee_tab
+        <where>
+            <if test="eName!=null and eName!=''">
+                eName like  concat('%',#{eName},'%')
+            </if>
+            <if test="eSex!=null and eSex!=''">
+                and
+                eSex=#{eSex}
+            </if>
+        </where>
+    </select>
+
+</mapper>
