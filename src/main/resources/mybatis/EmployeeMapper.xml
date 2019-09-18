@@ -39,4 +39,33 @@
         </where>
     </select>
 
+    <update id="update" parameterType="emv">
+        update
+            employee_tab
+        <set>
+            <if test="eName!=null and eName!=''">
+                eName=#{eName},
+            </if>
+            <if test="eSex!=null and eSex!=''">
+                eSex=#{eSex},
+            </if>
+        </set>
+        where
+            eId=#{eId}
+    </update>
+
+    <delete id="deleteById" parameterType="int">
+        delete
+        from
+            employee_tab
+        where
+            eId=#{eId}
+    </delete>
+
+    <insert id="saveOne" parameterType="emv" useGeneratedKeys="true" keyProperty="eId">
+        insert into
+            employee_tab
+        (eName, eSex) values (#{eName},#{eSex})
+    </insert>
+
 </mapper>

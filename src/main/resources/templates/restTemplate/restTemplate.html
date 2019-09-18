@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <button id="post01">post01</button>
+</div>
+<script src="../../static/js/jquery-1.12.4.js"></script>
+<script>
+    document.getElementById('post01').addEventListener('click',function (event) {
+        let data={
+            eName:'wang',
+            eSex:2
+        };
+        $.ajax({
+            url:'./post01',
+            type:'post',
+            contentType:'application/json',
+            data:JSON.stringify(data),
+            success(data){
+                console.log(JSON.stringify(data));
+            }
+        });
+    },false);
+</script>
+</body>
+</html>

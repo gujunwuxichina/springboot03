@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <button id="btn">go</button>
+</div>
+<script src="../../static/js/jquery-1.12.4.js"></script>
+<script>
+    document.getElementById('btn').addEventListener('click',function (event) {
+        $.ajax({
+            url:'./getHeader',
+            type:'post',
+            contentType:'application/json',
+            headers:{
+                myName:'gujun'
+            },
+            success(data){
+                console.log(JSON.stringify(data));
+            }
+        });
+    },false);
+</script>
+</body>
+</html>

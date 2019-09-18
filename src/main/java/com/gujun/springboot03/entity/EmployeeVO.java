@@ -10,7 +10,6 @@ public class EmployeeVO implements Serializable {
 
     private static final long serialVersionUID = -3756835401126740887L;
 
-    @JSONField(serialize = false)
     private Integer eId;
 
     private String eName;

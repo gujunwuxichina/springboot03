@@ -11,6 +11,11 @@
         <button id="getById">getById</button>
         <button id="post1">post1</button>
         <button id="post2">post2</button>
+        <button id="put1">put1</button>
+        <button id="patch1">patch1</button>
+        <button id="delete1">delete1</button><br/>
+        <button id="saveOne1">saveOne1</button>
+        <button id="saveOne2">saveOne2</button><br/>
     </div>
     <div id="show"></div>
 </div>
@@ -73,6 +78,107 @@
                         show.innerText='服务器出错!';
                         break;
                 }
+            }
+        });
+    },false);
+    document.getElementById('put1').addEventListener('click',function (event) {
+        show.innerText='';
+        let data={
+            eName:'zhang',
+            eSex:2
+        },eId=2;
+        $.ajax({
+            url:'./put1/'+eId,
+            type:'put',
+            contentType:'application/json',
+            data:JSON.stringify(data),
+            success(data){
+                switch (data.result) {
+                    case 'success':
+                        show.innerText=JSON.stringify(data.employee);
+                        break;
+                    case 'error':
+                        show.innerText='服务器出错!';
+                        break;
+                }
+            }
+        });
+    },false);
+    document.getElementById('patch1').addEventListener('click',function (event) {
+        show.innerText='';
+        let eName='wang',eId=2;
+        $.ajax({
+            url:'./patch1/'+eId+'/'+eName,
+            type:'patch',
+            contentType:'application/json',
+            success(data){
+                switch (data.result) {
+                    case 'success':
+                        show.innerText=JSON.stringify(data.employee);
+                        break;
+                    case 'error':
+                        show.innerText='服务器出错!';
+                        break;
+                }
+            }
+        });
+    },false);
+    document.getElementById('delete1').addEventListener('click',function (event) {
+        show.innerText='';
+        let eId=2;
+        $.ajax({
+            url:'./delete1/'+eId,
+            type:'delete',
+            contentType:'application/json',
+            success(data){
+                switch (data.result) {
+                    case 'success':
+                        show.innerText='删除成功!';
+                        break;
+                    case 'error':
+                        show.innerText='服务器出错!';
+                        break;
+                }
+            }
+        });
+    },false);
+    document.getElementById('saveOne1').addEventListener('click',function (event) {
+        show.innerText='';
+        let em={
+            eName:'zhang',
+            eSex: 2
+        };
+        $.ajax({
+            url:'./saveOne1',
+            type:'post',
+            contentType:'application/json',
+            data:JSON.stringify(em),
+            success(data,status,xhr){
+                let result=xhr.getResponseHeader('result'); //获取响应头
+                let s=xhr.status;
+                show.innerText='状态码:'+s+',响应头result:'+result;
+                console.log(status);
+                console.log(JSON.stringify(data));
+            }
+        });
+    },false);
+    document.getElementById('saveOne2').addEventListener('click',function (event) {
+        show.innerText='';
+        let em={
+            eName:'li',
+            eSex: 1
+        };
+        $.ajax({
+            url:'./saveOne2',
+            type:'post',
+            contentType:'application/json',
+            data:JSON.stringify(em),
+            success(data,status,xhr){
+                let result=xhr.getResponseHeader('result'); //获取响应头
+                let s=xhr.status;
+                show.innerText='状态码:'+s+',响应头result:'+result;
+                console.log(status);
+                console.log(JSON.stringify(data));
             }
         });
     },false);

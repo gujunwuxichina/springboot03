@@ -29,4 +29,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeMapper.post2(employeeVO);
     }
 
+    @Override
+    public int update(EmployeeVO employeeVO) {
+        return employeeMapper.update(employeeVO);
+    }
+
+    @Override
+    public int deleteById(Integer eId) {
+        return employeeMapper.deleteById(eId);
+    }
+
+    @Override
+    public int saveOne(EmployeeVO employeeVO) {
+        return employeeMapper.saveOne(employeeVO);
+    }
+
 }

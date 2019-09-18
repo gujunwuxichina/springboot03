@@ -13,4 +13,10 @@ public interface EmployeeService {
 
     List<Employee> post2(EmployeeVO employeeVO);
 
+    int update(EmployeeVO employeeVO);
+
+    int deleteById(Integer eId);
+
+    int saveOne(EmployeeVO employeeVO);
+
 }
