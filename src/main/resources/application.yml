@@ -4,7 +4,7 @@ server:
   port: 8099
 spring:
   application:
-    name:springboot02
+    name:springboot03
 
   datasource:
     # mysql
