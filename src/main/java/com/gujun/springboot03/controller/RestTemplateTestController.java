@@ -20,7 +20,7 @@ public class RestTemplateTestController {
         当今微服务中，会将一个大系统拆分成多个微服务系统，每个微服务系统都会暴露REST风格的URI请求给别的微服务系统所调用；
         为了方便完成系统之间的相互调用，Spring提供了RestTemplate模板类，通过它可以方便地对REST请求进行系统之间的调用，完成
         系统之间的数据集成；Spring Cloud中还可以进行声明式调用，后有；
-        RestTemplate底层是通过HttpURLConnection实现的；
+        RestTemplate底层是通过HttpURLConnection实现的；✳
 
      */
 
@@ -62,8 +62,11 @@ public class RestTemplateTestController {
     }
 
     /*
+
         获取响应头、状态码和资源交换：
-        HH
+        RestTemplate的postForEntity(),将会返回一个ResponseEntity对象，该对象包含了服务器返回的响应体、状态码、响应头；
+        RestTemplate还有一个exchange(),可以作为资源交互使用，可以根据需要定制更多参数；
+        HH，推荐postForEntity()/getForEntity()；
      */
 
 }
