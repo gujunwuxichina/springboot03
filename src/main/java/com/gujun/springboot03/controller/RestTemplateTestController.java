@@ -48,7 +48,7 @@ public class RestTemplateTestController {
     }
 
     //通过post请求传递JSON请求体(Body)
-    @PostMapping("post01")
+    @PostMapping("/post01")
     public ResponseEntity<EmployeeVO> post01(@RequestBody EmployeeVO employeeVO){
         HttpHeaders headers=new HttpHeaders();
         //设置请求内容为JSON类型
